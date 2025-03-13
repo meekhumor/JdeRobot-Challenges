@@ -1,0 +1,33 @@
+/* Fade In Animation */
+@keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .animate-fade-in {
+    animation: fadeIn 0.3s ease-out;
+  }
+  
+  /* Hover Scale Animation */
+  @keyframes hoverScale {
+    from {
+      transform: scale(1);
+    }
+    to {
+      transform: scale(1.02);
+    }
+  }
+  
+  .hover-scale {
+    transition: transform 0.2s ease;
+  }
+  
+  .hover-scale:hover {
+    animation: hoverScale 0.2s ease forwards;
+  }
