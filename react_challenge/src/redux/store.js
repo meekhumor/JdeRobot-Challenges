@@ -1,5 +1,5 @@
 import { createStore, applyMiddleware } from 'redux';
-import { thunk } from 'redux-thunk'; 
+import {thunk} from 'redux-thunk'; // Correct import syntax
 import rootReducer from './reducers';
 import { loadState, saveState, debounce } from '../components/common/LocalStorage';
 
@@ -10,8 +10,7 @@ store.subscribe(debounce(() => {
   saveState({
     tasks: store.getState().tasks,
     categories: store.getState().categories,
-    theme: store.getState().theme,
   });
-}, 1000)); 
+}, 1000));
 
 export default store;

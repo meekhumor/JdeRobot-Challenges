@@ -4,15 +4,11 @@ import Footer from './Footer';
 import { useSelector } from 'react-redux';
 
 const Layout = ({ children }) => {
-  const darkMode = useSelector(state => state.theme.darkMode);
-  
   return (
-    <div className={`min-h-screen flex flex-col ${darkMode ? 'dark bg-gray-900' : 'bg-gray-100'}`}>
+    <div className="min-h-screen flex flex-col">
       <Header />
-      <main className="flex-grow py-6 px-4">
-        <div className="container mx-auto">
-          {children}
-        </div>
+      <main className="flex-grow bg-gray-100 dark:bg-gray-900 py-6 px-4">
+        <div className="container mx-auto">{children}</div>
       </main>
       <Footer />
     </div>

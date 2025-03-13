@@ -3,21 +3,23 @@ import { useDispatch, useSelector } from 'react-redux';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { addTask } from '../../redux/actions/taskActions';
+import { addCategory } from '../../redux/actions/categoryActions';
 import { Plus, ChevronDown } from 'lucide-react';
 
 const TaskForm = () => {
   const [title, setTitle] = useState('');
   const [priority, setPriority] = useState('medium');
-  const [category, setCategory] = useState('default');
+  const [category, setCategory] = useState('personal');
   const [dueDate, setDueDate] = useState(null);
   const [showAdvanced, setShowAdvanced] = useState(false);
+  const [showNewCategoryInput, setShowNewCategoryInput] = useState(false); // New boolean flag
+  const [newCategory, setNewCategory] = useState(''); // Input value
   
   const dispatch = useDispatch();
   const categories = useSelector(state => state.categories);
   
   const handleSubmit = (e) => {
     e.preventDefault();
-    
     if (!title.trim()) return;
     
     dispatch(addTask({
@@ -29,8 +31,18 @@ const TaskForm = () => {
     
     setTitle('');
     setPriority('medium');
-    setCategory('default');
+    setCategory('personal');
     setDueDate(null);
+  };
+
+  const handleAddCategory = () => {
+    if (newCategory.trim()) {
+      const normalizedCategory = newCategory.toLowerCase();
+      dispatch(addCategory(normalizedCategory));
+      setCategory(normalizedCategory); // Select the new category
+      setNewCategory(''); // Clear input
+      setShowNewCategoryInput(false); // Hide input after adding
+    }
   };
   
   return (
@@ -82,16 +94,46 @@ const TaskForm = () => {
               <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                 Category
               </label>
-              <select
-                value={category}
-                onChange={(e) => setCategory(e.target.value)}
-                className="w-full p-2 border border-gray-300 dark:border-gray-600 rounded-md
-                          dark:bg-gray-700 dark:text-white"
-              >
-                {categories.map(cat => (
-                  <option key={cat.id} value={cat.name}>{cat.name}</option>
-                ))}
-              </select>
+              <div className="flex items-center space-x-2">
+                <select
+                  value={category}
+                  onChange={(e) => setCategory(e.target.value)}
+                  className="w-full p-2 border border-gray-300 dark:border-gray-600 rounded-md
+                            dark:bg-gray-700 dark:text-white"
+                >
+                  {categories.map(cat => (
+                    <option key={cat.id} value={cat.name}>
+                      {cat.name.charAt(0).toUpperCase() + cat.name.slice(1)}
+                    </option>
+                  ))}
+                </select>
+                <button
+                  type="button"
+                  onClick={() => setShowNewCategoryInput(!showNewCategoryInput)} 
+                  className="p-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 transition"
+                >
+                  <Plus size={16} />
+                </button>
+              </div>
+              {showNewCategoryInput && (
+                <div className="mt-2">
+                  <input
+                    type="text"
+                    value={newCategory}
+                    onChange={(e) => setNewCategory(e.target.value)}
+                    placeholder="New category"
+                    className="w-full p-2 rounded-md dark:bg-gray-700 dark:text-white"
+                    onKeyPress={(e) => e.key === 'Enter' && handleAddCategory()}
+                  />
+                  <button
+                    type="button"
+                    onClick={handleAddCategory}
+                    className="mt-1 w-full p-1 bg-indigo-600 text-white rounded-md hover:bg-indigo-700"
+                  >
+                    Add Category
+                  </button>
+                </div>
+              )}
             </div>
             
             <div className="sm:col-span-2">

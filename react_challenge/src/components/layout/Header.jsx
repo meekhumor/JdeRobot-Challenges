@@ -1,13 +1,20 @@
-import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { toggleTheme } from "../../redux/actions/themeActions";
+import React, { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 import { Moon, Sun, Bell } from "lucide-react";
 
 const Header = () => {
   const [showNotifications, setShowNotifications] = useState(false);
-  const dispatch = useDispatch();
-  const darkMode = useSelector((state) => state.theme.darkMode);
+  const [darkMode, setDarkMode] = useState(false); // Local state for dark mode
+
   const tasks = useSelector((state) => state.tasks);
+
+  useEffect(() => {
+    if (darkMode) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  }, [darkMode]);
 
   const upcomingTasks = tasks.filter((task) => {
     if (!task.dueDate || task.completed) return false;
@@ -98,7 +105,7 @@ const Header = () => {
 
             {/* Theme toggle */}
             <button
-              onClick={() => dispatch(toggleTheme())}
+              onClick={() => setDarkMode(!darkMode)}
               className="p-2 hover:bg-indigo-500 rounded-full transition"
             >
               {darkMode ? <Sun size={20} /> : <Moon size={20} />}

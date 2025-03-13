@@ -5,7 +5,7 @@ export const addCategory = (name) => ({
   type: ADD_CATEGORY,
   payload: {
     id: Date.now(),
-    name,
+    name: name.toLowerCase(),
   },
 });
 
