@@ -16,7 +16,7 @@ const TaskFilter = () => {
       </h2>
       
       <div className="space-y-4">
-        {/* Status Filter */}
+
         <div>
           <h3 className="text-sm font-medium mb-2 text-gray-700 dark:text-gray-300 flex items-center">
             <Circle size={16} className="mr-2" />

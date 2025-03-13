@@ -7,7 +7,7 @@ export const REORDER_TASKS = 'REORDER_TASKS';
 export const addTask = (task) => ({
   type: ADD_TASK,
   payload: {
-    id: Date.now(), // Simple unique ID generation
+    id: Date.now(), 
     completed: false,
     ...task,
   },
@@ -28,7 +28,19 @@ export const updateTask = (id, updates) => ({
   payload: { id, updates },
 });
 
-export const reorderTasks = (dragIndex, hoverIndex) => ({
-  type: REORDER_TASKS,
-  payload: { dragIndex, hoverIndex },
-});
+export const reorderTasks = (dragId, hoverId) => (dispatch, getState) => {
+  const { tasks } = getState();
+  const dragIndex = tasks.findIndex(t => t.id === dragId);
+  const hoverIndex = tasks.findIndex(t => t.id === hoverId);
+  
+  if (dragIndex === -1 || hoverIndex === -1) return;
+
+  const newTasks = [...tasks];
+  const [draggedTask] = newTasks.splice(dragIndex, 1);
+  newTasks.splice(hoverIndex, 0, draggedTask);
+  
+  dispatch({
+    type: 'REORDER_TASKS',
+    payload: newTasks,
+  });
+};

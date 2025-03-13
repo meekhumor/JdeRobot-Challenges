@@ -3,7 +3,7 @@ import { Tag } from 'lucide-react';
 
 const categoryColors = {
   default: { bg: 'bg-gray-100', text: 'text-gray-800', darkBg: 'dark:bg-gray-700', darkText: 'dark:text-gray-200' },
-  personal: { bg: 'bg-purple-100', text: 'text-purple-800', darkBg: 'dark:bg-purple-900', darkText: 'dark:text-purple-200' },
+  personal: { bg: 'bg-purple-100', text: 'text-purple-100', darkBg: 'dark:bg-purple-900', darkText: 'dark:text-purple-200' },
   work: { bg: 'bg-blue-100', text: 'text-blue-800', darkBg: 'dark:bg-blue-900', darkText: 'dark:text-blue-200' },
   groceries: { bg: 'bg-green-100', text: 'text-green-800', darkBg: 'dark:bg-green-900', darkText: 'dark:text-green-200' },
   health: { bg: 'bg-red-100', text: 'text-red-800', darkBg: 'dark:bg-red-900', darkText: 'dark:text-red-200' },

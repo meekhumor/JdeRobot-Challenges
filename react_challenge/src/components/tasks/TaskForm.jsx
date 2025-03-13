@@ -27,7 +27,6 @@ const TaskForm = () => {
       dueDate
     }));
     
-    // Reset form
     setTitle('');
     setPriority('medium');
     setCategory('default');

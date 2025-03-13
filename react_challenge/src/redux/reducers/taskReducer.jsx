@@ -1,11 +1,15 @@
 import { ADD_TASK, TOGGLE_TASK, REMOVE_TASK, UPDATE_TASK, REORDER_TASKS } from '../actions/taskActions';
 
-const initialState = [];
+const initialState = [
+  // Example initial tasks with order
+  { id: 1, title: 'Task 1', completed: false, priority: 'high', dueDate: '2025-03-14', order: 0 },
+  { id: 2, title: 'Task 2', completed: false, priority: 'low', dueDate: '2025-03-15', order: 1 },
+];
 
 const taskReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_TASK:
-      return [...state, action.payload];
+      return [...state, { ...action.payload, order: state.length }];
     case TOGGLE_TASK:
       return state.map(task =>
         task.id === action.payload ? { ...task, completed: !task.completed } : task
@@ -16,13 +20,8 @@ const taskReducer = (state = initialState, action) => {
       return state.map(task =>
         task.id === action.payload.id ? { ...task, ...action.payload.updates } : task
       );
-    case REORDER_TASKS: {
-      const { dragIndex, hoverIndex } = action.payload;
-      const newTasks = [...state];
-      const [draggedTask] = newTasks.splice(dragIndex, 1);
-      newTasks.splice(hoverIndex, 0, draggedTask);
-      return newTasks;
-    }
+    case REORDER_TASKS:
+      return action.payload;
     default:
       return state;
   }

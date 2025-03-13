@@ -2,12 +2,10 @@ import React from 'react';
 import { CheckCircle, Circle, Search } from 'lucide-react';
 
 const EmptyState = ({ type, searchQuery }) => {
-  // Default empty state
   let icon = <Circle size={48} className="text-gray-400" />;
   let title = "No tasks yet";
   let message = "Add your first task to get started";
   
-  // Change based on filter type
   if (searchQuery) {
     icon = <Search size={48} className="text-gray-400" />;
     title = "No matching tasks";

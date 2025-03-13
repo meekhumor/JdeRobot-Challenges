@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { useDrag, useDrop } from 'react-dnd';
 import { Calendar, CheckCircle, Circle, Clock, Edit, Trash2, AlertTriangle } from 'lucide-react';
 import { toggleTask, removeTask, updateTask } from '../../redux/actions/taskActions';
-import CategoryBadge from '../categories/CategoryBadge';
+import CategoryBadge from '../common/CategoryBadge';
 import PriorityBadge from '../common/PriorityBadge';
 
 const TaskCard = ({ task, index, moveTask }) => {
@@ -12,7 +12,6 @@ const TaskCard = ({ task, index, moveTask }) => {
   const dispatch = useDispatch();
   const ref = useRef(null);
   
-  // Calculates if task is due soon
   const isDueSoon = () => {
     if (!task.dueDate) return false;
     const dueDate = new Date(task.dueDate);
@@ -22,7 +21,6 @@ const TaskCard = ({ task, index, moveTask }) => {
     return diffDays >= 0 && diffDays <= 2; 
   };
   
-  // Calculate if task is overdue
   const isOverdue = () => {
     if (!task.dueDate) return false;
     const dueDate = new Date(task.dueDate);
