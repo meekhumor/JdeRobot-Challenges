@@ -1,0 +1,48 @@
+# Ignore build, devel, and install directories
+/build/
+/devel/
+/install/
+
+# Ignore log files
+/logs/
+/log/
+/rosbag_recordings/
+
+# Ignore CMake and Catkin-specific files
+/CMakeLists.txt.user
+/catkin_generated/
+/cmake-build-debug/
+/compile_commands.json
+
+# Ignore Python cache
+**/__pycache__/
+/*.pyc
+/*.pyo
+
+# Ignore IDE-specific files
+/.idea/
+/.vscode/
+/*.swp
+/*.swo
+
+# Ignore dependencies installed via rosdep
+/ros_ws/src/CMakeLists.txt
+
+# Ignore launch-generated files
+/*.launch~
+/.launch.deprecated
+
+# Ignore custom messages and services (if generated)
+/msg_gen/
+/srv_gen/
+/action_gen/
+
+# Ignore third-party packages
+/external/
+/vendor/
+
+# Ignore temporary and backup files
+*~
+*.bak
+.DS_Store
+Thumbs.db
