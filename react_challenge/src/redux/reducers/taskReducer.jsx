@@ -1,7 +1,7 @@
 import { ADD_TASK, TOGGLE_TASK, REMOVE_TASK, UPDATE_TASK, REORDER_TASKS } from '../actions/taskActions';
 
+// mock data
 const initialState = [
-  // Example initial tasks with order
   { id: 1, title: 'Task 1', category: 'personal', completed: false, priority: 'high', dueDate: '2025-03-14', order: 0 },
   { id: 2, title: 'Task 2', category: 'personal', completed: false, priority: 'low', dueDate: '2025-03-15', order: 1 },
 ];

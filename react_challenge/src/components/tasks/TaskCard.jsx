@@ -28,7 +28,6 @@ const TaskCard = ({ task, index, moveTask }) => {
     return dueDate < today && !task.completed;
   };
   
-  // Drag and drop setup
   const [{ isDragging }, drag] = useDrag({
     type: 'TASK',
     item: { id: task.id, index },
@@ -47,8 +46,7 @@ const TaskCard = ({ task, index, moveTask }) => {
       item.index = index;  
     },
   });
-  
-  // Initialize drag and drop refs
+
   drag(drop(ref));
   
   const handleToggle = () => {
@@ -74,7 +72,7 @@ const TaskCard = ({ task, index, moveTask }) => {
   return (
     <div 
       ref={ref}
-      className={`bg-white dark:bg-gray-800 rounded-lg shadow-md p-4 mb-4 border-l-4 
+      className={`bg-white dark:bg-gray-800 rounded-lg shadow-md p-4 mb-4 border-l-8 
         ${task.completed ? 'border-green-500' : 
          isOverdue() ? 'border-red-500' : 
          isDueSoon() ? 'border-yellow-500' : 
@@ -84,7 +82,8 @@ const TaskCard = ({ task, index, moveTask }) => {
     >
       <div className="flex items-start justify-between">
         <div className="flex items-start space-x-3 flex-grow">
-          {/* Completion Toggle */}
+        
+          {/* current status*/}
           <button 
             onClick={handleToggle}
             className={`mt-1 flex-shrink-0 text-${task.completed ? 'green' : 'gray'}-500 hover:text-${task.completed ? 'green' : 'gray'}-700`}
@@ -92,7 +91,7 @@ const TaskCard = ({ task, index, moveTask }) => {
             {task.completed ? <CheckCircle size={20} /> : <Circle size={20} />}
           </button>
           
-          {/* Task Content */}
+
           <div className="flex-grow">
             {isEditing ? (
               <input
@@ -101,7 +100,7 @@ const TaskCard = ({ task, index, moveTask }) => {
                 onChange={(e) => setEditTitle(e.target.value)}
                 className="w-full p-1 border border-gray-300 dark:border-gray-600 rounded dark:bg-gray-700 dark:text-white"
                 autoFocus
-                onKeyPress={(e) => {
+                onKeyDown={(e) => {
                   if (e.key === 'Enter') {
                     handleEdit();
                   }
@@ -113,7 +112,7 @@ const TaskCard = ({ task, index, moveTask }) => {
               </h3>
             )}
             
-            {/* Task Metadata */}
+            {/* details badge */}
             <div className="mt-2 flex flex-wrap gap-2">
               <CategoryBadge category={task.category} />
               <PriorityBadge priority={task.priority} />
@@ -138,7 +137,7 @@ const TaskCard = ({ task, index, moveTask }) => {
           </div>
         </div>
         
-        {/* Task Actions */}
+        {/* update and delete task  */}
         <div className="flex space-x-2 ml-2">
           <button 
             onClick={handleEdit}

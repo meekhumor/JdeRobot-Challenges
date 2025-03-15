@@ -39,9 +39,9 @@ const TaskForm = () => {
     if (newCategory.trim()) {
       const normalizedCategory = newCategory.toLowerCase();
       dispatch(addCategory(normalizedCategory));
-      setCategory(normalizedCategory); // Select the new category
-      setNewCategory(''); // Clear input
-      setShowNewCategoryInput(false); // Hide input after adding
+      setCategory(normalizedCategory);
+      setNewCategory(''); 
+      setShowNewCategoryInput(false);
     }
   };
   
@@ -123,7 +123,7 @@ const TaskForm = () => {
                     onChange={(e) => setNewCategory(e.target.value)}
                     placeholder="New category"
                     className="w-full p-2 rounded-md dark:bg-gray-700 dark:text-white"
-                    onKeyPress={(e) => e.key === 'Enter' && handleAddCategory()}
+                    onKeyDown={(e) => e.key === 'Enter' && handleAddCategory()}
                   />
                   <button
                     type="button"

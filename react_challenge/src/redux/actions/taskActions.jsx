@@ -30,8 +30,8 @@ export const updateTask = (id, updates) => ({
 
 export const reorderTasks = (dragId, hoverId) => (dispatch, getState) => {
   const { tasks } = getState();
-  const dragIndex = tasks.findIndex(t => t.id === dragId);
-  const hoverIndex = tasks.findIndex(t => t.id === hoverId);
+  const dragIndex =tasks.findIndex(t => t.id === dragId);
+  const hoverIndex =tasks.findIndex(t => t.id === hoverId);
   
   if (dragIndex === -1 || hoverIndex === -1) return;
 
@@ -39,6 +39,10 @@ export const reorderTasks = (dragId, hoverId) => (dispatch, getState) => {
   const [draggedTask] = newTasks.splice(dragIndex, 1);
   newTasks.splice(hoverIndex, 0, draggedTask);
   
+  newTasks.forEach((task, index) => {
+    task.order = index;
+  });
+
   dispatch({
     type: 'REORDER_TASKS',
     payload: newTasks,

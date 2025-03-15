@@ -17,6 +17,7 @@ const TaskFilter = () => {
       
       <div className="space-y-4">
 
+        {/* status filter  */}
         <div>
           <h3 className="text-sm font-medium mb-2 text-gray-700 dark:text-gray-300 flex items-center">
             <Circle size={16} className="mr-2" />
@@ -55,7 +56,7 @@ const TaskFilter = () => {
           </div>
         </div>
         
-        {/* Category Filter */}
+        {/* category filter */}
         <div>
           <h3 className="text-sm font-medium mb-2 text-gray-700 dark:text-gray-300 flex items-center">
             <Tag size={16} className="mr-2" />
@@ -86,7 +87,7 @@ const TaskFilter = () => {
           </div>
         </div>
         
-        {/* Priority Filter */}
+        {/* priority filter */}
         <div>
           <h3 className="text-sm font-medium mb-2 text-gray-700 dark:text-gray-300 flex items-center">
             <Flag size={16} className="mr-2" />
