@@ -2,8 +2,8 @@ import { ADD_TASK, TOGGLE_TASK, REMOVE_TASK, UPDATE_TASK, REORDER_TASKS } from '
 
 // mock data
 const initialState = [
-  { id: 1, title: 'Task 1', category: 'personal', completed: false, priority: 'high', dueDate: '2025-03-14', order: 0 },
-  { id: 2, title: 'Task 2', category: 'personal', completed: false, priority: 'low', dueDate: '2025-03-15', order: 1 },
+  { id: 1, title: 'Submit the assignments', category: 'work', completed: false, priority: 'medium', dueDate: '2025-03-10', order: 0 },
+  { id: 2, title: 'Go for shopping', category: 'personal', completed: false, priority: 'low', dueDate: '2025-03-17', order: 1 },
 ];
 
 const taskReducer = (state = initialState, action) => {
