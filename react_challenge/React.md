@@ -4,6 +4,10 @@ A React and redux based task management application built for the **JdeRobot GSo
 
 ---
 
+https://github.com/user-attachments/assets/d5c1ac86-94d3-4945-b523-c424224c3349
+
+---
+
 ## Running the Application 
 1. **Clone the Repository**:
    ```
