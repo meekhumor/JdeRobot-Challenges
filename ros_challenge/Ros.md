@@ -1,4 +1,4 @@
-## Overview
+## Solution Overview
 This is my solution for the GSoC-2024 JdeRobot ROS2 Challenge.
 1. **ROS2 Basics**: Built a publisher-subscriber setup that sends "Hello! ROS2 is fun" and visualized a TurtleBot3 laser scan in `rviz2`.
 2. **Navigation2**: Set up a TurtleBot3 to navigate 3 waypoints in Gazebo using the Navigation2 stack, made the map using SLAM
