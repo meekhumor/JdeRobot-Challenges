@@ -1,3 +1,7 @@
+# Source Code
+
+https://github.com/meekhumor/JdeRobot-Challenges/tree/main/react_challenge
+
 # TaskBuddy App
 
 A React and redux based task management application built for the **JdeRobot GSoC 2024** React Challenge. This app extends a basic task manager with advanced features like filtering, categories, priorities, search, drag-and-drop reordering, and due dates.
