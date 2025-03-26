@@ -1,3 +1,6 @@
+## Source Code
+https://github.com/meekhumor/JdeRobot-Challenges/tree/main/ros_challenge
+
 ## Solution Overview
 This is my solution for the GSoC-2024 JdeRobot ROS2 Challenge.
 1. **ROS2 Basics**: Built a publisher-subscriber setup that sends "Hello! ROS2 is fun" and visualized a TurtleBot3 laser scan in `rviz2`.
@@ -30,5 +33,3 @@ https://www.youtube.com/watch?v=-bAVaW1WqQQ
 ![Screenshot from 2025-03-18 21-19-15](https://github.com/user-attachments/assets/a958e8f5-5935-40bf-a149-9db1da4963cf)
 
 
-## Source Code
-https://github.com/meekhumor/JdeRobot-Challenges/tree/main/ros_challenge
